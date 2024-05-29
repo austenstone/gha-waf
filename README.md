@@ -56,6 +56,10 @@ You can also cancel a previous run when a new run is triggered.
   cancel-in-progress: true
 ```
 
+#### Disable Actions
+
+You can always disable actions for a specific [repository](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#managing-github-actions-permissions-for-your-repository) or [workflow](https://docs.github.com/en/actions/using-workflows/disabling-and-enabling-a-workflow) if you're not using them. You can always re-enable them later.
+
 ### 4. Deployment
 
 #### [Environments](https://docs.github.com/en/actions/using-jobs/using-environments-for-jobs)
@@ -68,6 +72,18 @@ Environments allow you to specify a job as a deployment job. This allows you to 
 ### 4. Operational Excellence
 
 ### 5. Performance Efficiency
+
+#### Conditional on changed files
+
+Sometimes you want to condition the jobs/steps that run based on what files changed in a push or pull request.
+
+##### [Path filtering](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onpushpull_requestpull_request_targetpathspaths-ignore)
+
+You can use `on.<push|pull_request|pull_request_target>.<paths|paths-ignore>` to trigger a workflow based on the files changed in a push or pull request.
+
+##### [tj-actions/changed-files](https://github.com/tj-actions/changed-files) and [dorny/paths-filter](https://github.com/dorny/paths-filter)
+
+These actions allows you to conditionally run jobs or steps based on the files changed in a pull request.
 
 ### 6. Authoring
 
@@ -118,6 +134,10 @@ You should call workflows from other workflows to avoid duplication. Practice in
 | Can add additional steps to job | No | Yes |
 | call | `uses: <owner><repo>/.github/workflows/<workflow>.yml@<ref>` | `uses: <owner>/<repo><?/path>@<ref>` |
 | can be used in matrix strategy | Yes | Yes |
+
+#### [Repository rulesets](https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-organization-settings/managing-rulesets-for-repositories-in-your-organization)
+
+Using the new version of branch protection rules, repository rulesets, you can actually [require workflows to pass before merging](https://docs.github.com/en/enterprise-cloud@latest/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets#require-workflows-to-pass-before-merging) a pull request for all(or some) of the repositories in your organization.
 
 #### Keeping reusable workflows and actions up to date
 
