@@ -41,11 +41,53 @@ Caching dependencies can significantly reduce the time it takes to run a workflo
 
 You can set a timeout for each [job](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idtimeout-minutes) or [step](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepstimeout-minutes) in a workflow to prevent it from running for longer than it should. If the timeout is reached, the job or step is cancelled.
 
+#### [Concurrency](https://docs.github.com/en/actions/using-jobs/using-concurrency)
+
+Use concurrency to ensure that only a single job or workflow using the same concurrency group can run at a time.
+
+```yml
+concurrency:
+  group: ${{ github.ref }}
+```
+
+You can also cancel a previous run when a new run is triggered.
+
+```yml
+  cancel-in-progress: true
+```
+
+### 4. Deployment
+
+#### [Environments](https://docs.github.com/en/actions/using-jobs/using-environments-for-jobs)
+
+Environments allow you to specify a job as a deployment job. This allows you to better track deployments and enforce environment protection rules.
+
+##### [Environment protection rules](https://docs.github.com/en/enterprise-cloud@latest/actions/deployment/targeting-different-environments/using-environments-for-deployment#deployment-protection-rules)
+
+
 ### 4. Operational Excellence
 
 ### 5. Performance Efficiency
 
+### 6. Authoring
+
+Use [VSCode](https://code.visualstudio.com/).
+
+#### [GitHub Actions](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-github-actions)
+
+The GitHub Actions extension lets you manage your workflows, view the workflow run history, and helps with authoring workflows. It provides syntax highlighting, integrated documentation, validation, code completion, and more.
+
 ### 6. Scale
+
+You should call workflows from other workflows to avoid duplication. Practice innersourcing to promote best practices and reuse well designed and tested workflows.
+
+- Easier to maintain
+- Create workflows more quickly
+- Avoid duplication. DRY(don't repeat yourself).
+- Build consistently across multiple, dozens, or even hundreds of repositories
+- Require specific workflows for specific deployments
+- Promotes best practices
+- Abstract away complexity
 
 #### Reusable workflows & Composite Actions
 
@@ -58,6 +100,7 @@ You can set a timeout for each [job](https://docs.github.com/en/actions/using-wo
 | Use of Secrets | Can use secrets from the caller workflow | Must be passed in as inputs |
 | Can specify the `runs on` label | Yes | No |
 | Can add additional steps to job | No | Yes |
+| call | `uses: <owner><repo>/.github/workflows/<workflow>.yml@<ref>` | `uses: <owner>/<repo><?/path>@<ref>` |
 
 #### Keeping reusable workflows and actions up to date
 
