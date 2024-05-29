@@ -77,7 +77,21 @@ Use [VSCode](https://code.visualstudio.com/).
 
 The GitHub Actions extension lets you manage your workflows, view the workflow run history, and helps with authoring workflows. It provides syntax highlighting, integrated documentation, validation, code completion, and more.
 
-### 6. Scale
+#### [GitHub CLI](https://cli.github.com/)
+
+The GitHub CLI is preinstalled on all GitHub-hosted runners. It's a great utility both during actions runtime and even for local development.
+
+#### Running locally
+
+##### Make your local machine as a [self-hosted runner](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners)
+
+You can use your local machine as a self-hosted runner to test your workflows locally. You do need to specify the `runs-on` label as the one you set your machine to. You still need to trigger the workflow through GitHub.
+
+##### [Act](https://github.com/nektos/act)
+
+Act is a command-line tool that allows you to run your GitHub Actions locally.
+
+### 6. Scale and Reusability
 
 You should call workflows from other workflows to avoid duplication. Practice innersourcing to promote best practices and reuse well designed and tested workflows.
 
@@ -101,6 +115,7 @@ You should call workflows from other workflows to avoid duplication. Practice in
 | Can specify the `runs on` label | Yes | No |
 | Can add additional steps to job | No | Yes |
 | call | `uses: <owner><repo>/.github/workflows/<workflow>.yml@<ref>` | `uses: <owner>/<repo><?/path>@<ref>` |
+| can be used in matrix strategy | Yes | Yes |
 
 #### Keeping reusable workflows and actions up to date
 
@@ -116,6 +131,19 @@ By versioning your actions and reusable workflows you can ensure that you can up
 ###### [Dependabot](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates)
 
 Dependabot supports GitHub Actions as a package manager. It can automatically create pull requests to update your workflows when new versions of actions are released. By introducing changes through PRs you can ensure that the changes are reviewed before merging and don't cause any issues.
+
+#### [Starter workflows](https://docs.github.com/en/actions/using-workflows/creating-starter-workflows-for-your-organization)
+
+> [!NOTE]  
+> Starter workflows require a public .github repository, they are not available for private repositories.
+
+Starter workflows are a great way to provide pre-written workflows to your users.
+
+#### [Repository templates](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository)
+
+Repository templates allow you to create a repository that can be used as a template for new repositories. This template can include workflows, actions, and other files that you want to be included in new repositories.
+
+#### [Sharing secrets and variables within an organization](https://docs.github.com/en/actions/using-workflows/sharing-workflows-secrets-and-runners-with-your-organization#sharing-secrets-and-variables-within-an-organization)
 
 ## Conclusion
 
