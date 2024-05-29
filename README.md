@@ -83,6 +83,8 @@ The GitHub CLI is preinstalled on all GitHub-hosted runners. It's a great utilit
 
 #### Running locally
 
+While there isn't really a way to run GitHub Actions locally, there are a few ways to test your workflows locally.
+
 ##### Make your local machine as a [self-hosted runner](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners)
 
 You can use your local machine as a self-hosted runner to test your workflows locally. You do need to specify the `runs-on` label as the one you set your machine to. You still need to trigger the workflow through GitHub.
