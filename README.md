@@ -59,6 +59,21 @@ You can set a timeout for each [job](https://docs.github.com/en/actions/using-wo
 | Can specify the `runs on` label | Yes | No |
 | Can add additional steps to job | No | Yes |
 
+#### Keeping reusable workflows and actions up to date
+
+It's important that you can cleanly update your workflows across all repositories that use them but how do we know that something won't break?
+
+##### Versioning
+
+> [!WARNING]
+> Pinning to a branch such as `@main` is not a best practice because it can introduce breaking changes. It's recommended to pin to a specific version or use a version range.
+
+By versioning your actions and reusable workflows you can ensure that you can update them in a controlled manner. This allows you to test the changes in a single repository before rolling them out to all repositories that use them.
+
+###### [Dependabot](https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates)
+
+Dependabot supports GitHub Actions as a package manager. It can automatically create pull requests to update your workflows when new versions of actions are released. By introducing changes through PRs you can ensure that the changes are reviewed before merging and don't cause any issues.
+
 ## Conclusion
 
 Summarize the key points of the framework and its benefits.
