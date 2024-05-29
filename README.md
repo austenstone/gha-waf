@@ -49,7 +49,7 @@ You can set a timeout for each [job](https://docs.github.com/en/actions/using-wo
 
 #### Reusable workflows & Composite Actions
 
-Reusable workflows and composite actions can help you reuse GitHub Actions logic across multiple workflows.
+[Reusable Workflows](https://docs.github.com/en/actions/learn-github-actions/reusing-workflows) and [Composite Actions](https://docs.github.com/en/actions/creating-actions/creating-a-composite-run-steps-action) can help you reuse logic across multiple workflows.
 
 | Feature | [Reusable workflows](https://docs.github.com/en/actions/learn-github-actions/reusing-workflows) | [Composite Actions](https://docs.github.com/en/actions/creating-actions/creating-a-composite-run-steps-action) |
 |---------|--------------------|-------------------|
